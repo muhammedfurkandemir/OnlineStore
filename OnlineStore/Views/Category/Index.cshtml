@@ -1,0 +1,51 @@
+﻿@using OnlineStore.Models.Concrete
+@model List<Category>
+
+
+@*Temp data yapısı ile controller ve view arasında veri taşınır.*@
+    <div class="container">
+        <div class="row pt-3 pb-4">
+        <h1>Categories</h1>
+        </div>
+    </div>
+    <div>
+<table class ="table table-bordered">
+    <thead >
+        <tr>
+            <th>CategoryId</th>
+            <th>CategoryName</th>
+            <th>Description</th>
+            <th style="width:150px"></th>
+            <th style="width:150px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var category in Model)
+        {
+            <tr>
+                <td>@category.Id</td>
+                <td>@category.CategoryName</td>
+                <td>@category.Description</td>
+                <td><a asp-controller="Category" asp-action="Update" asp-route-id="@category.Id" type="button" class="btn btn-info" style="width:150px">Update</a></td>
+                <td><a asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id" type="button" class="btn btn-danger" style="width:150px">Delete</a></td>
+            </tr>
+        }
+        
+    </tbody>
+</table>
+
+         @if (TempData["Success"] != null)
+        {
+        <div>
+        <h4 class="text-info">@TempData["Success"]</h4>
+        </div>
+        }
+        <div class="row pt-3 pb-2">
+            
+        <a asp-controller="Category" asp-action="Add" type="button" class="btn btn-primary col-md-5">
+            Add New Category
+        </a>
+        </div>
+
+
+</div>

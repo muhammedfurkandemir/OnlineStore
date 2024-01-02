@@ -1,0 +1,41 @@
+﻿@using OnlineStore.Models.DTOs
+@model ProductDetailDto
+
+<div class="container">
+    <div class="row">
+        
+        <!-- Ürün Resmi -->
+        <div class="col-md-4">
+            <div class="position-relative">
+                <span class="badge bg-primary position-absolute top-0 start-0 rounded-badge">@Model.CategoryName</span>
+                <img src="@Model.ImagePath" class="img-fluid rounded"
+                     style="max-width: 400px; max-height: 600px; width: auto; height: auto; margin-right: 20px;">
+            </div>
+
+        </div>
+        
+        <!-- Ürün Bilgileri -->
+        <div class="col-md-4">
+            <div class="d-flex flex-column">
+                <h2 class="text-primary">@Model.ProductName</h2>
+                <div class="flex-grow-1 overflow-auto">
+                    <p style="color:#888">@Model.Description</p>
+                </div>
+            </div>
+            <br />
+            <div class="mt-auto">
+                <span class="badge rounded-pill border border-warning" style="color:orange; font-size: 22px;">
+                    @string.Format("{0:0.00}", @Model.UnitPrice) <span style="font-size: 14px;">₺</span>
+                </span>
+            </div>
+            <br />
+            <button onclick="addToCart(@Model.Id)" class="btn btn-primary mt-2 rounded-pill" style="width:250px">Sepete Ekle</button>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+
+    </div>
+</div>
+
+

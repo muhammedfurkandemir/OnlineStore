@@ -1,0 +1,29 @@
+﻿@using OnlineStore.Models.Concrete
+@model Order
+
+<form method="post">
+    @*<input asp-for="Id" hidden /> Burda Biz Her sınıfın ve özellğin adını uygun verdiğimiz için mapleme yapmadan .net algılıyor ancak mapleme yapmamız gerekseydi metoda gidecek özelliği bu şekilde göndermemiz gerekirdi.*@
+    @*<input asp-for="Id" hidden />*@
+    <div class="border p-3 mt-5">
+        <div class="row pb-3">
+            <h2 class="text-primary">Delete Order</h2>
+            <hr />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="CustomerId" class="p-0"></label>
+            <input asp-for="CustomerId" disabled class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="OrderDate" class="p-0"></label>
+            <input asp-for="OrderDate" disabled class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="ShipCity" class="p-0"></label>
+            <input asp-for="ShipCity" disabled class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:250px">Delete</button>
+
+        <a asp-controller="Order" asp-action="Index" class="btn btn-primary" style="width:250px">Back</a>
+    </div>
+</form>

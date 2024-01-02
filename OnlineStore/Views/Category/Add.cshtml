@@ -1,0 +1,35 @@
+﻿@using OnlineStore.Models.Concrete
+@model Category
+
+<form method="post">
+    @*<input asp-for="Id" hidden />*@
+    <div class="border p-3 mt-5">
+        <div class="row pb-3">
+            <h2 class="text-primary">Add Category</h2>
+            <hr>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="CategoryName" class="p-0"></label>
+            <input asp-for="CategoryName" class="form-control" />
+            <span asp-validation-for="CategoryName" class="text-primary"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description" class="p-0"></label>
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-primary"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:250px">Add</button>
+
+        <a asp-controller="Category" asp-action="Index" class="btn btn-primary" style="width:250px">Back</a>
+
+    </div>
+
+</form>
+
+@* @section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+} *@

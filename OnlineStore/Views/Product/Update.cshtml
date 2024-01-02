@@ -1,0 +1,69 @@
+﻿@using OnlineStore.Models.Concrete
+@model Product
+
+<form method="post" enctype="multipart/form-data">
+    @*  *@
+
+    <div class="row">
+        <input asp-for="ImageUrl" hidden /> 
+        <div class="col-10">
+            <div class="border p-3 mt-5">
+                <div class="row pb-3">
+                    <h2 class="text-primary">Update Product</h2>
+                    <hr>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ProductName" class="p-0"></label>
+                    <input asp-for="ProductName" class="form-control" />
+                    <span asp-validation-for="ProductName" class="text-primary"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="CategoryId" class="p-0"></label>
+                    <select asp-for="CategoryId" asp-items="ViewBag.Categories" class="form-select">
+                        <option value="" disabled selected hidden>Select Category</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="UnitsInStock" class="p-0"></label>
+                    <input asp-for="UnitsInStock" class="form-control" />
+                    <span asp-validation-for="UnitsInStock" class="text-primary"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="UnitPrice" class="p-0"></label>
+                    <input asp-for="UnitPrice" class="form-control" />
+                    <span asp-validation-for="UnitPrice" class="text-primary"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Description" class="p-0"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-primary"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ImageUrl" class="p-0"></label>
+                    <input type="file" name="file" class="form-control" />
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width:250px">Update</button>
+
+                <a asp-controller="Product" asp-action="Index" class="btn btn-primary" style="width:250px">Back</a>
+
+            </div>
+        </div>
+        <div class="col-2">
+            <div>
+                <img src="@Model.ImageUrl" width="250" style="border-radius:7px; border:1px  solid #bbb9b9" />
+            </div>
+        </div>
+    </div>
+
+    
+    
+
+</form>
+
+@* @section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+} *@
