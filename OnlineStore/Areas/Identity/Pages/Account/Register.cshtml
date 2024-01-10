@@ -11,6 +11,11 @@
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
             <h2>Create a new account.</h2>
             <hr />
+            @if (ViewData["IdentityValidation"]!=null)
+            {
+                <span class="text-danger">@ViewData["IdentityValidation"]</span>
+                <hr />
+            }
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
             <div class="form-floating mb-3">
                 <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
@@ -27,7 +32,32 @@
                 <label asp-for="Input.ConfirmPassword">Confirm Password</label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Name" class="form-control" aria-required="true" placeholder="Ad" />
+                <label asp-for="Input.Name">Ad</label>
+                <span asp-validation-for="Input.Name" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.LastName" class="form-control" aria-required="true" placeholder="Soyad" />
+                <label asp-for="Input.LastName">Soyad</label>
+                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.IdentityNumber" class="form-control"  aria-required="true" placeholder="Tc Kimlik No" />
+                <label asp-for="Input.IdentityNumber">Tc Kimlik No</label>
+                <span asp-validation-for="Input.IdentityNumber" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Adress" class="form-control"  aria-required="true" placeholder="Adres" />
+                <label asp-for="Input.Adress">Adres</label>
+                <span asp-validation-for="Input.Adress" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Birthday" class="form-control" aria-required="true" placeholder="Doğum Günü" />
+                <label asp-for="Input.Birthday">Doğum Günü</label>
+                <span asp-validation-for="Input.Birthday" class="text-danger"></span>
+            </div>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Kayıt Ol</button>
         </form>
     </div>
     <div class="col-md-6 col-md-offset-2">

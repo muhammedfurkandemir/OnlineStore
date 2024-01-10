@@ -7,8 +7,14 @@ namespace OnlineStore.Models.Concrete
     public class ApplicationUser :IdentityUser ,IEntity
     {
         [Required]
-        public int IdentityNumber { get; set; }
+        public string? IdentityNumber { get; set; }
         [Required]
-        public string Adress { get; set; }
+        public string? Adress { get; set; }
+        [Required]
+        public DateTime Birthday { get; set; }
+        [Required]
+        public string? LastName { get; set; }
+        [Required]
+        public string? Name { get; set; }
     }
 }

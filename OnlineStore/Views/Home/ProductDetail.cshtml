@@ -29,7 +29,24 @@
                 </span>
             </div>
             <br />
-            <button onclick="addToCart(@Model.Id)" class="btn btn-primary mt-2 rounded-pill" style="width:250px">Sepete Ekle</button>
+            @if (User.IsInRole("User"))
+            {
+                @using (Html.BeginForm("AddToCart", "Cart"))
+                {
+                    @Html.HiddenFor(p => p.Id)
+                    <button type="submit" class="btn btn-primary mt-2 rounded-pill" style="width:250px">
+                        <i class="fa fa-cart-plus" aria-hidden="true"></i>  
+                        Sepete Ekle
+                    </button>
+                }
+            }else
+            {
+                <button onclick="checkUser()" class="btn btn-primary mt-2 rounded-pill" style="width:250px">
+                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                    Sepete Ekle
+                </button>
+            }
+            
         </div>
         <div class="col-md-4">
 
@@ -37,5 +54,11 @@
 
     </div>
 </div>
+<script>
+    function checkUser() {
+        alert("Lütfen giriş yapınız.")
+    }
+</script>
+
 
 

@@ -1,0 +1,77 @@
+﻿@using OnlineStore.Models.DTOs
+@model HomeViewDto
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group">
+                <a class="list-group-item list-group-item-action" onclick="getProducts()">Tüm Ürünler</a>
+                @foreach (var category in Model.Categories)
+                {
+                    <a class="list-group-item list-group-item-action" onclick="getProductsByCategoryId(@category.Id)">
+                        @category.CategoryName
+                    </a>
+                }
+            </div>
+        </div>
+        <div  class="col-md-9">
+            <div id="getProductsByCategory">
+                <div>@await Html.PartialAsync("_ProductsPartial", Model.Products)</div>
+                @* <partial name="_ProductsPartial" model="Model.Products"/> *@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- JavaScript ile Ajax isteği -->
+<script>
+    function getProductsByCategoryId(categoryId) {
+        $.ajax({
+            url: '@Url.Action("GetProductsByCategoryId", "Home")' + '?id=' + categoryId,
+            type: 'GET',
+            data: {},
+            success: function (data) {
+                $('#getProductsByCategory').html(data);
+            },
+            error: function () {
+                alert('Ürünler getirilirken bir hata oluştu.')
+            }
+        });
+    }
+</script>
+<script>
+    function getProducts() {
+        $.ajax({
+            url: '@Url.Action("GetAllProduct", "Home")' ,
+            type: 'GET',
+            data: {},
+            success: function (data) {
+                $('#getProductsByCategory').html(data);
+            },
+            error: function () {
+                alert('Ürünler getirilirken bir hata oluştu.')
+            }
+        });
+    }
+    function isActive() {
+        $.ajax({
+            url: '@Url.Action("GetProductsByCategoryId", "Home")' + '?id=' + categoryId,
+            type: 'GET',
+            data: {},
+            success: function (data) {
+                $('#getProductsByCategory').html(data);
+            },
+            error: function () {
+                alert('Ürünler getirilirken bir hata oluştu.')
+            }
+        });
+    }
+</script>
+
+
+
+
+
+
+

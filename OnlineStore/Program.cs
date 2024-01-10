@@ -1,11 +1,13 @@
 using OnlineStore.Utilities.EntityFreamwork;
 using Microsoft.EntityFrameworkCore;
-using OnlineStore.Models.Abstract;
-using OnlineStore.Models.Concrete;
 using OnlineStore.Utilities.Helpers.FileHelper;
 using Microsoft.AspNetCore.Identity;
 using OnlineStore.Utilities.Helpers.EmailHelper;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using OnlineStore.Utilities.Mernis;
+using OnlineStore.Models.Abstract.Repositories;
+using OnlineStore.Models.Concrete.Repositories;
+using Microsoft.AspNetCore.Session;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +29,10 @@ builder.Services.AddScoped<IProductImageRepository, ProductImageRepository>();
 builder.Services.AddScoped<IFileHelper, FileHelper>();
 builder.Services.AddScoped<IEmailSender,EmailSender>();
 
+builder.Services.AddSingleton<IUserService, KpsServiceAdapter>();
+
+builder.Services.AddSession();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -45,6 +51,8 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();//
+
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",

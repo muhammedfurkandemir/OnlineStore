@@ -3,9 +3,9 @@ using OnlineStore.Models.DTOs;
 using OnlineStore.Utilities.EntityFreamwork.Repositories;
 using System.Linq.Expressions;
 
-namespace OnlineStore.Models.Abstract
+namespace OnlineStore.Models.Abstract.Repositories
 {
-    public interface IProductRepository:IRepository<Product>
+    public interface IProductRepository : IRepository<Product>
     {
         List<ProductDetailDto> GetProductDetails();
 

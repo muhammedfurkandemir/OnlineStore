@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using OnlineStore.Models.Abstract;
+using OnlineStore.Models.Abstract.Repositories;
 using OnlineStore.Models.Concrete;
 using OnlineStore.Utilities.Constants;
 

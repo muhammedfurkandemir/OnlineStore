@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/OnlineStore.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
 <body>
     <header>
@@ -21,7 +22,10 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Anasayfa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Categories">Ürünler</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
@@ -35,11 +39,16 @@
                                 <a class="nav-link" asp-area="" asp-controller="Category" asp-action="Index">Categories</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Order" asp-action="Index">Orders</a>
+                                <a class="nav-link " asp-area="" asp-controller="Order" asp-action="Index">Orders</a>
                             </li>
                         }
                     </ul>
+                    @if (User.IsInRole(UserRoles.Role_User))
+                        {
+                    <div id="cart"></div>
+                        }
                     <partial name="_LoginPartial"/>
+                        
                 </div>
             </div>
         </nav>
@@ -61,3 +70,10 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+<script>
+    $(document).ready(function () {
+        $.get('@Url.Action("Summary", "Cart")', function (data) {
+            $('#cart').html(data);
+        });
+    });
+</script>

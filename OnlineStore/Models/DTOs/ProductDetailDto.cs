@@ -1,6 +1,8 @@
-﻿namespace OnlineStore.Models.DTOs
+﻿using OnlineStore.Models.Abstract;
+
+namespace OnlineStore.Models.DTOs
 {
-    public class ProductDetailDto
+    public class ProductDetailDto:IDto
     {
         public int Id { get; set; }
 
