@@ -1,19 +1,79 @@
-﻿
-
-<div >
-    <div class="centered">
-        <h1 >3D Secure yönlendiriliyorsunuz...</h1>
-    </div>
-</div>
+﻿@using OnlineStore.Models.Concrete
+@model ShippingDetails
 
 <style>
-
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
+    .validation-summary-errors{
+        font-weight:bold;
+        color:#f00;
+    }
 </style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <br />
+            <h2 class="align-content-center">Sipariş Bilgileriniz</h2>
+            <p>Lütfen Sipariş Bilgilerinizi oluşturunuz.</p>
+            <hr />
+            <br />
+            @using (Html.BeginForm("Checkout", "Cart"))
+            {
+                @Html.ValidationSummary();
+                <div class="form-group">
+                    <label class="col-sm-2 col-form-label">Ad Soyad</label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(s => s.FullName, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label class="col-sm-2 col-form-label">Adres Tanımı</label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(s => s.AdressName, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label  class="col-sm-2 col-form-label">Tam Adres</label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(s => s.Address, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label class="col-sm-2 col-form-label">Şehir</label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(s => s.City, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label  class="col-sm-2 col-form-label">Mahalle</label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(s => s.District, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label  class="col-sm-2 col-form-label">Sokak</label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(s => s.Street, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label  class="col-sm-2 col-form-label">Ev No</label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(s => s.HomeNo, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-6">
+                        <button type="submit" class="btn btn-primary" style="width:250px">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            Sipariş Et
+                        </button>
+                    </div>
+                    
+                </div>
+                
+            }
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+<script src="C:\Users\demir\Desktop\Root\.NetPractice\OnlineStore\OnlineStore\wwwroot\lib\jquery-validation\dist\jquery.validate.js"></script>

@@ -1,30 +1,63 @@
-﻿@using OnlineStore.Models.Concrete
+﻿@using OnlineStore.Models.Entities
 @model Order
 
 <form method="post">
-    @*<input asp-for="Id" hidden />*@
+    <input asp-for="AdressName" hidden />
+    <input asp-for="OrderLines" hidden />
+    <input asp-for="OrderDate" hidden />
+    <input asp-for="Total" hidden />
+    <input asp-for="UserId" hidden />
+    <input asp-for="OrderNumber" hidden />
     <div class="border p-3 mt-5">
         <div class="row pb-3">
             <h2 class="text-primary">Update Order</h2>
             <hr>
         </div>
-
         <div class="mb-3">
-            <label asp-for="CustomerId" class="p-0"></label>
-            <input asp-for="CustomerId" class="form-control" />
-            <span asp-validation-for="CustomerId" class="text-primary"></span>
+            <label asp-for="Id" class="p-0"></label>
+            <input asp-for="Id" class="form-control" disabled />
         </div>
         <div class="mb-3">
-            <label asp-for="OrderDate" class="p-0"></label>
-            <input asp-for="OrderDate" class="form-control" />
-            <span asp-validation-for="OrderDate" class="text-primary"></span>
+            <label asp-for="OrderState" class="p-0"></label>
+            <select  asp-for="OrderState" class="form-select">
+                <option value="">Lütfen Sipariş Durumu Seçiniz</option>
+                @foreach (var option in Enum.GetValues(typeof(OnlineStore.Models.Concrete.EnumOrderState)))
+                {
+                    <option value="@option">@option</option>
+                }
+            </select>
+            <span asp-validation-for="OrderState" class="text-primary"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="ShipCity" class="p-0"></label>
-            <input asp-for="ShipCity" class="form-control" />
-            <span asp-validation-for="ShipCity" class="text-primary"></span>
+            <label asp-for="UserName" class="p-0"></label>
+            <input asp-for="UserName" class="form-control" />
+            <span asp-validation-for="UserName" class="text-primary"></span>
         </div>
-
+        <div class="mb-3">
+            <label asp-for="Adress" class="p-0"></label>
+            <input asp-for="Adress" class="form-control" />
+            <span asp-validation-for="Adress" class="text-primary"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="City" class="p-0"></label>
+            <input asp-for="City" class="form-control" />
+            <span asp-validation-for="City" class="text-primary"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="District" class="p-0"></label>
+            <input asp-for="District" class="form-control" />
+            <span asp-validation-for="District" class="text-primary"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Street" class="p-0"></label>
+            <input asp-for="Street" class="form-control" />
+            <span asp-validation-for="Street" class="text-primary"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="HomeNo" class="p-0"></label>
+            <input asp-for="HomeNo" class="form-control" />
+            <span asp-validation-for="HomeNo" class="text-primary"></span>
+        </div>
         <button type="submit" class="btn btn-primary" style="width:250px">Update</button>
 
         <a asp-controller="Order" asp-action="Index" class="btn btn-primary" style="width:250px">Back</a>

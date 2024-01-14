@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using OnlineStore.Models.Concrete;
+using OnlineStore.Models.Entities;
 
 namespace OnlineStore.Utilities.EntityFreamwork
 {
@@ -17,6 +17,8 @@ namespace OnlineStore.Utilities.EntityFreamwork
         public DbSet<ProductImage> ProductImages { get; set; }
 
         public DbSet<Order> Orders { get; set; }
+
+        public DbSet<OrderLine> OrderLines { get; set; }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }

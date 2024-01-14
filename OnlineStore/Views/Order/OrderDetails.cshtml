@@ -1,0 +1,115 @@
+﻿@using OnlineStore.Models.ViewModels
+@model OrderDetailsViewModel
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Sipariş Detay Bilgileri</h2>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-3" style="color:purple">Sipariş Durum</dt>
+                @if (Model.OrderState==OnlineStore.Models.Concrete.EnumOrderState.Waiting)
+                {
+                    <dd class="col-sm-9">
+                        <div class="alert alert-info" role="alert">
+                            Onay Bekleniyor
+                        </div>
+                    </dd>
+                    
+                }else if (Model.OrderState == OnlineStore.Models.Concrete.EnumOrderState.Shipped)
+                {
+                    <dd class="col-sm-9">
+                        <div class="alert alert-primary" role="alert">
+                            Sipariş Kargoda
+                        </div>
+                    </dd>
+
+                }
+                else if (Model.OrderState == OnlineStore.Models.Concrete.EnumOrderState.Canceled)
+                {
+                    <dd class="col-sm-9">
+                        <div class="alert alert-danger" role="alert">
+                            Sipariş İptal Edildi
+                        </div>
+                    </dd>
+
+                }
+                else if (Model.OrderState == OnlineStore.Models.Concrete.EnumOrderState.Completed)
+                {
+                    <dd class="col-sm-9">
+                        <div class="alert alert-success" role="alert">
+                            Sipariş Tamamlandı
+                        </div>
+                    </dd>
+
+                }
+                @* <dd class="col-sm-9" style="color:purple">@Model.OrderState</dd> *@
+
+                <dt class="col-sm-3" style="color:purple">Sipariş Numarası</dt>
+                <dd class="col-sm-9">@Model.OrderNumber</dd>
+
+                <dt class="col-sm-3" style="color:purple">Sipariş Tarihi 
+                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                </dt>
+                <dd class="col-sm-9">@Model.OrderDate</dd>
+
+                <dt class="col-sm-3" style="color:purple">Toplam Tutar</dt>
+                <dd class="col-sm-9">@Model.Total.ToString("c")</dd>
+
+                <dt class="col-sm-3" style="color:purple">Adres Bilgileri 
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                </dt>
+                <dd class="col-sm-9">
+                    @Model.AdressName
+                    <hr />
+                    @Model.Adress
+                    <br />
+                    @Model.City - @Model.District - @Model.Street
+                    <br />
+                    @Model.HomeNo
+
+                </dd>
+
+                <dt class="col-sm-3" style="color:purple">Sipariş Edilen Ürünler</dt>
+                <dd class="col-sm-9">
+                    <table class="table table-bordered rounded">
+                        <thead>
+                            <tr>
+                                <th ></th>
+                                <th>Ürün Adı</th>
+                                <th>Adet</th>
+                                <th>Fiyat</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var orderLine in Model.OrderLines)
+                            {
+                                <tr>
+                                    <td><img src="@orderLine.ImageUrl" width="70"/></td>
+                                    <td>@orderLine.ProductName</td>
+                                    <td>@orderLine.Quantity</td>
+                                    <td>@orderLine.Price.ToString("c")</td>
+                                    <td><a href="/Home/ProductDetail/@orderLine.ProductId" class="btn btn-xs btn-outline btn-primary rounded">
+                                    <i class="fa fa-angle-double-right" aria-hidden="true"></i> 
+                                    Ürünü İncele    
+                                    </a></td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3"></td>
+                                <td style="text-align: right;">Toplam Tutar: @Model.Total.ToString("c")</td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </dd>
+
+            </dl>
+            
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">

@@ -1,8 +1,8 @@
 ﻿using OnlineStore.Models.Abstract;
 
-namespace OnlineStore.Models.Concrete
+namespace OnlineStore.Models.Entities
 {
-    public class ProductImage:IEntity
+    public class ProductImage : IEntity
     {
         public int Id { get; set; }
 

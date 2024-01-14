@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using OnlineStore.DataAccess.Abstract;
 using OnlineStore.Models;
-using OnlineStore.Models.Abstract.Repositories;
-using OnlineStore.Models.Concrete;
 using OnlineStore.Models.DTOs;
+using OnlineStore.Models.Entities;
+using OnlineStore.Models.ViewModels;
 using System.Diagnostics;
 
 namespace OnlineStore.Controllers
@@ -30,7 +31,8 @@ namespace OnlineStore.Controllers
         {
             List<Product> products=_productRepository.GetAll();
             List<Category> categories = _categoryRepository.GetAll();
-            HomeViewDto homeView = new HomeViewDto{
+            HomeViewModel homeView = new HomeViewModel
+            {
                 Products = products,
                 Categories = categories
             };
@@ -57,7 +59,7 @@ namespace OnlineStore.Controllers
             return PartialView("_ProductsPartial", products);
         }
 
-        public IActionResult Privacy()
+        public IActionResult Communication()
         {
             return View();
         }

@@ -1,7 +1,7 @@
-﻿using OnlineStore.Models.Concrete;
+﻿using OnlineStore.Models.Entities;
 using OnlineStore.Utilities.EntityFreamwork.Repositories;
 
-namespace OnlineStore.Models.Abstract.Repositories
+namespace OnlineStore.DataAccess.Abstract
 {
     public interface IProductImageRepository : IRepository<ProductImage>
     {

@@ -1,4 +1,4 @@
-﻿@using OnlineStore.Models.Concrete
+﻿@using OnlineStore.Models.Entities
 @model List<Order>
 
 
@@ -8,15 +8,35 @@
         <h1>Orders</h1>
         </div>
     </div>
-    <div>
+<div>
+    @if (TempData["Success"] != null)
+    {
+        <div>
+            <div class="alert alert-dismissible alert-success">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <strong>Well done!</strong> @TempData["Success"]
+            </div>
+        </div>
+    }
+    <div class="row pt-3 pb-2">
+
+        <a asp-controller="Order" asp-action="Add" type="button" class="btn btn-primary col-md-5">
+            Add New Order
+        </a>
+    </div>
 <table class ="table table-bordered">
     <thead >
         <tr>
             <th>Id</th>
-            <th>Customer Id</th>
+            <th>User Name</th>
+            <th>Order Number</th>
             <th>Order Date</th>
-            <th>Ship City</th>
-            <th style="width:150px"></th>
+            <th>Order State</th>
+            <th>Total</th>
+            <th>Adress</th>
+            <th>City</th>
+            <th style="width:100px"></th>
+            <th style="width:100px"></th>
             <th style="width:150px"></th>
         </tr>
     </thead>
@@ -25,29 +45,37 @@
         {
             <tr>
                     <td>@order.Id</td>
-                    <td>@order.CustomerId</td>
+                    <td>@order.UserName</td>
+                    <td>@order.OrderNumber</td>
                     <td>@order.OrderDate</td>
-                    <td>@order.ShipCity</td>
-                    <td><a asp-controller="Order" asp-action="Update" asp-route-id="@order.Id" type="button" class="btn btn-info" style="width:150px">Update</a></td>
-                    <td><a asp-controller="Order" asp-action="Delete" asp-route-id="@order.Id" type="button" class="btn btn-danger" style="width:150px">Delete</a></td>
+                    <td>@order.OrderState</td>
+                    <td>@order.Total.ToString("c")</td>
+                    <td>@order.Adress</td>
+                    <td>@order.City</td>
+                    <td><a asp-controller="Order" asp-action="Update" asp-route-id="@order.Id" type="button"
+                           class="btn btn-info rounded" style="width:100px">
+                            <i class="fa fa-cog" aria-hidden="true"></i>
+                           Update</a>
+                    </td>
+                    <td><a asp-controller="Order" asp-action="Delete" asp-route-id="@order.Id" type="button"
+                           class="btn btn-danger rounded" style="width:100px">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                           Delete</a>
+                    </td>
+                    <td>
+                        <a asp-controller="Order" asp-action="OrderDetails" asp-route-id="@order.Id"
+                            class="btn btn-xs btn-outline btn-primary rounded" style="width:150px">
+                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                            Sipariş Detayı
+                        </a>
+                    </td>
             </tr>
         }
         
     </tbody>
 </table>
 
-         @if (TempData["Success"] != null)
-        {
-        <div>
-        <h4 class="text-info">@TempData["Success"]</h4>
-        </div>
-        }
-        <div class="row pt-3 pb-2">
-            
-        <a asp-controller="Order" asp-action="Add" type="button" class="btn btn-primary col-md-5">
-            Add New Order
-        </a>
-        </div>
+        
 
 
 </div>

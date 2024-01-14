@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Identity;
 using OnlineStore.Utilities.Helpers.EmailHelper;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using OnlineStore.Utilities.Mernis;
-using OnlineStore.Models.Abstract.Repositories;
-using OnlineStore.Models.Concrete.Repositories;
 using Microsoft.AspNetCore.Session;
+using OnlineStore.DataAccess.Abstract;
+using OnlineStore.DataAccess.Concrete;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +25,7 @@ builder.Services.AddRazorPages();//
 builder.Services.AddScoped<ICategoryRepository,CategoryRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IOrderLineRepository, OrderLineRepository>();
 builder.Services.AddScoped<IProductImageRepository, ProductImageRepository>();
 builder.Services.AddScoped<IFileHelper, FileHelper>();
 builder.Services.AddScoped<IEmailSender,EmailSender>();

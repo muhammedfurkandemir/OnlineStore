@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using OnlineStore.Models.Abstract.Repositories;
-using OnlineStore.Models.Concrete;
+using OnlineStore.DataAccess.Abstract;
+using OnlineStore.Models.Entities;
 
 namespace OnlineStore.Controllers
 {

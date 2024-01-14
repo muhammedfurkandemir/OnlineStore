@@ -1,9 +1,9 @@
 ﻿using OnlineStore.Models.Abstract;
 using System.ComponentModel.DataAnnotations;
 
-namespace OnlineStore.Models.Concrete
+namespace OnlineStore.Models.Entities
 {
-    public class Category:IEntity
+    public class Category : IEntity
     {
         public int Id { get; set; }
 

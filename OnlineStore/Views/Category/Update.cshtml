@@ -1,4 +1,4 @@
-﻿@using OnlineStore.Models.Concrete
+﻿@using OnlineStore.Models.Entities
 @model Category
 
 <form method="post">
@@ -20,9 +20,13 @@
             <span asp-validation-for="Description" class="text-primary"></span>
         </div>
 
-        <button type="submit" class="btn btn-primary" style="width:250px">Update</button>
+        <button type="submit" class="btn btn-primary" style="width:250px">
+            <i class="fa fa-check" aria-hidden="true"></i>
+            Update</button>
 
-        <a asp-controller="Category" asp-action="Index" class="btn btn-primary" style="width:250px">Back</a>
+        <a asp-controller="Category" asp-action="Index" class="btn btn-primary" style="width:250px">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            Back</a>
 
     </div>
 

@@ -1,8 +1,9 @@
-﻿using OnlineStore.Models.Abstract.Repositories;
+﻿using OnlineStore.DataAccess.Abstract;
+using OnlineStore.Models.Entities;
 using OnlineStore.Utilities.EntityFreamwork;
 using OnlineStore.Utilities.EntityFreamwork.Repositories;
 
-namespace OnlineStore.Models.Concrete.Repositories
+namespace OnlineStore.DataAccess.Concrete
 {
     public class ProductImageRepository : RepositoryBase<ProductImage>, IProductImageRepository
     {

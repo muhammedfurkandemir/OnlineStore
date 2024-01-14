@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using OnlineStore.Models.Abstract;
+using OnlineStore.Models.Entities;
 
 namespace OnlineStore.Models.Concrete
 {

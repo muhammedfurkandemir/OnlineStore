@@ -1,4 +1,4 @@
-﻿@using OnlineStore.Models.Concrete
+﻿@using OnlineStore.Models.Entities
 @model Category
 
 <form method="post">
@@ -21,6 +21,8 @@
 
         <button type="submit" class="btn btn-primary" style="width:250px">Delete</button>
 
-        <a asp-controller="Category" asp-action="Index" class="btn btn-primary" style="width:250px">Back</a>
+        <a asp-controller="Category" asp-action="Index" class="btn btn-primary" style="width:250px">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            Back</a>
     </div>
 </form>

@@ -1,32 +1,47 @@
-﻿@using OnlineStore.Models.Concrete
+﻿@using OnlineStore.Models.Entities
 @model List<Product>
 
 
 @*Temp data yapısı ile controller ve view arasında veri taşınır.*@
-    <div class="container">
-        <div class="row pt-3 pb-4">
+<div class="container">
+    <div class="row pt-3 pb-4">
         <h1>Products</h1>
-        </div>
     </div>
-    <div>
-<table class ="table table-bordered">
-    <thead >
-        <tr>
-            <td>Image</td>
-            <th>Id</th>
-            <th>Product Name</th>
-            <th>Category</th>
-            <th>Units In Stock</th>
-            <th>Unit Price</th>
-            <th>Description</th>
-            <th style="width:150px"></th>
-            <th style="width:150px"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(var product in Model)
-        {
+</div>
+<div>
+    @if (TempData["Success"] != null)
+    {
+        <div>
+            <div class="alert alert-dismissible alert-success">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <strong>Well done!</strong> @TempData["Success"]
+            </div>
+        </div>
+    }
+    <div class="row pt-3 pb-2">
+
+        <a asp-controller="Product" asp-action="Add" type="button" class="btn btn-primary col-md-5">
+            Add New Product
+        </a>
+    </div>
+    <table class="table table-bordered">
+        <thead>
             <tr>
+                <td>Image</td>
+                <th>Id</th>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Units In Stock</th>
+                <th>Unit Price</th>
+                <th>Description</th>
+                <th style="width:150px"></th>
+                <th style="width:150px"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
                     <td><img src="@product.ImageUrl" alt="@product.ProductName" style="max-width:75px; max-height:150px; border-radius:7px; border:1px  solid #bbb9b9" /></td>
                     <td>@product.Id</td>
                     <td>@product.ProductName</td>
@@ -35,26 +50,15 @@
                     <td>@product.UnitPrice</td>
                     <td>@product.Description</td>
 
-                    <td><a asp-controller="Product" asp-action="Update" asp-route-id="@product.Id" type="button" class="btn btn-info" style="width:150px"><i class="fa fa-cog" aria-hidden="true"></i> Update</a></td>
-                    <td><a asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id" type="button" class="btn btn-danger" style="width:150px"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a></td>
-            </tr>
-        }
-        
-    </tbody>
-</table>
+                    <td><a asp-controller="Product" asp-action="Update" asp-route-id="@product.Id" type="button"
+                        class="btn btn-info rounded" style="width:150px"><i class="fa fa-cog" aria-hidden="true"></i> Update</a></td>
 
-         @if (TempData["Success"] != null)
-        {
-        <div>
-        <h4 class="text-info">@TempData["Success"]</h4>
-        </div>
-        }
-        <div class="row pt-3 pb-2">
-            
-        <a asp-controller="Product" asp-action="Add" type="button" class="btn btn-primary col-md-5">
-            Add New Product
-        </a>
-        </div>
+                    <td><a asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id" type="button"
+                        class="btn btn-danger rounded" style="width:150px"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a></td>
+                </tr>
+            }
 
+        </tbody>
+    </table>
 
 </div>

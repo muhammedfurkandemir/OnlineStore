@@ -27,9 +27,12 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Categories">Ürünler</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+                        @if (User.IsInRole(UserRoles.Role_User))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Order" asp-action="UserIndex">Siparişlerim</a>
+                            </li>
+                        }
                         @if (User.IsInRole(UserRoles.Role_Admin))
                         {
                             <li class="nav-item">
@@ -42,6 +45,9 @@
                                 <a class="nav-link " asp-area="" asp-controller="Order" asp-action="Index">Orders</a>
                             </li>
                         }
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Communication">İletişim</a>
+                        </li>
                     </ul>
                     @if (User.IsInRole(UserRoles.Role_User))
                         {
@@ -61,7 +67,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - OnlineStore - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2023 - OnlineStore - <a asp-area="" asp-controller="Home" asp-action="Communication">İletişim</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

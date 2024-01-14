@@ -2,9 +2,9 @@
 using OnlineStore.Models.Abstract;
 using System.ComponentModel;
 
-namespace OnlineStore.Models.Concrete
+namespace OnlineStore.Models.Entities
 {
-    public class Product:IEntity
+    public class Product : IEntity
     {
         public int Id { get; set; }
 

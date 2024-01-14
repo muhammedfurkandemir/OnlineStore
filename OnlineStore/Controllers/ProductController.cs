@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using OnlineStore.Models.Abstract.Repositories;
-using OnlineStore.Models.Concrete;
+using OnlineStore.DataAccess.Abstract;
+using OnlineStore.Models.Entities;
 using OnlineStore.Utilities.Constants;
 using OnlineStore.Utilities.Helpers.FileHelper;
 
@@ -12,8 +12,8 @@ namespace OnlineStore.Controllers
 
     public class ProductController : Controller
     {
-       private IProductRepository _productRepository;
-       private ICategoryRepository _categoryRepository;
+        private IProductRepository _productRepository;
+        private ICategoryRepository _categoryRepository;
         private IProductImageRepository _productImageRepository;
         private IFileHelper _fileHelper;
         public ProductController(IProductRepository productRepository, ICategoryRepository categoryRepository,

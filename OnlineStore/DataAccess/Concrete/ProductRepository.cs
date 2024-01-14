@@ -1,11 +1,12 @@
-﻿using OnlineStore.Models.Abstract.Repositories;
+﻿using OnlineStore.DataAccess.Abstract;
 using OnlineStore.Models.DTOs;
+using OnlineStore.Models.Entities;
 using OnlineStore.Utilities.EntityFreamwork;
 using OnlineStore.Utilities.EntityFreamwork.Repositories;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace OnlineStore.Models.Concrete.Repositories
+namespace OnlineStore.DataAccess.Concrete
 {
     public class ProductRepository : RepositoryBase<Product>, IProductRepository
     {
@@ -22,7 +23,6 @@ namespace OnlineStore.Models.Concrete.Repositories
 
         public ProductDetailDto GetProductDetail(int id)
         {
-            //var product = _onlineStoreContext.Set<Product>().SingleOrDefault(filter);
             var result = from product in _onlineStoreContext.Products.Where(p => p.Id == id)
                          join category in _onlineStoreContext.Categories
                          on product.CategoryId equals category.Id

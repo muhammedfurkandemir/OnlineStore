@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using OnlineStore.Models.Abstract.Repositories;
-using OnlineStore.Models.Concrete;
+using OnlineStore.DataAccess.Abstract;
+using OnlineStore.Models.Entities;
 using OnlineStore.Utilities.Constants;
 
 namespace OnlineStore.Controllers

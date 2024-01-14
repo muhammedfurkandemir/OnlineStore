@@ -18,7 +18,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
-using OnlineStore.Models.Concrete;
+using OnlineStore.Models.Entities;
 using OnlineStore.Utilities.Constants;
 using OnlineStore.Utilities.Mernis;
 

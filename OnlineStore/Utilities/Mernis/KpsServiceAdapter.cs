@@ -1,4 +1,4 @@
-﻿using OnlineStore.Models.Concrete;
+﻿using OnlineStore.Models.Entities;
 using ServiceReference1;
 
 namespace OnlineStore.Utilities.Mernis

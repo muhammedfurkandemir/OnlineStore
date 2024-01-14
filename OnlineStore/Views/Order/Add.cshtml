@@ -1,4 +1,4 @@
-﻿@using OnlineStore.Models.Concrete
+﻿@using OnlineStore.Models.Entities
 @model Order
 
 <form method="post">
@@ -8,23 +8,71 @@
             <h2 class="text-primary">Add Order</h2>
             <hr>
         </div>
+        <input asp-for="OrderLines" hidden />
 
-        <div class="mb-3">
-            <label asp-for="CustomerId" class="p-0"></label>
-            <input asp-for="CustomerId" class="form-control" />
-            <span asp-validation-for="CustomerId" class="text-primary"></span>
-        </div>
-
-        <div class="mb-3">
-            <label asp-for="OrderDate" class="p-0"></label>
-            <input asp-for="OrderDate" class="form-control" />
-            <span asp-validation-for="OrderDate" class="text-primary"></span>
+         <div class="mb-3">
+        <label asp-for="UserId" class="p-0"></label>
+        <input asp-for="UserId" class="form-control"  />
         </div>
         <div class="mb-3">
-            <label asp-for="ShipCity" class="p-0"></label>
-            <input asp-for="ShipCity" class="form-control" />
-            <span asp-validation-for="ShipCity" class="text-primary"></span>
+            <label asp-for="OrderNumber" class="p-0"></label>
+            <input asp-for="OrderNumber" class="form-control" />
         </div>
+        <div class="mb-3">
+        <label asp-for="OrderDate" class="p-0"></label>
+        <input asp-for="OrderDate" class="form-control"  />
+        </div>
+        <div class="mb-3">
+        <label asp-for="Total" class="p-0"></label>
+        <input asp-for="Total" class="form-control"  />
+        </div>
+        <div class="mb-3">
+            <label asp-for="OrderState" class="p-0"></label>
+            <select asp-for="OrderState" class="form-control">
+                <option value="">Lütfen Sipariş Durumu Seçiniz</option>
+                @foreach (var option in Enum.GetValues(typeof(OnlineStore.Models.Concrete.EnumOrderState)))
+                {
+                    <option value="@option">@option</option>
+                }
+            </select>
+            <span asp-validation-for="OrderState" class="text-primary"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="UserName" class="p-0"></label>
+            <input asp-for="UserName" class="form-control" />
+            <span asp-validation-for="UserName" class="text-primary"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="AdressName" class="p-0"></label>
+            <input asp-for="AdressName" class="form-control" />
+            <span asp-validation-for="AdressName" class="text-primary"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Adress" class="p-0"></label>
+            <input asp-for="Adress" class="form-control" />
+            <span asp-validation-for="Adress" class="text-primary"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="City" class="p-0"></label>
+            <input asp-for="City" class="form-control" />
+            <span asp-validation-for="City" class="text-primary"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="District" class="p-0"></label>
+            <input asp-for="District" class="form-control" />
+            <span asp-validation-for="District" class="text-primary"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Street" class="p-0"></label>
+            <input asp-for="Street" class="form-control" />
+            <span asp-validation-for="Street" class="text-primary"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="HomeNo" class="p-0"></label>
+            <input asp-for="HomeNo" class="form-control" />
+            <span asp-validation-for="HomeNo" class="text-primary"></span>
+        </div>
+        
 
         <button type="submit" class="btn btn-primary" style="width:250px">Add</button>
 

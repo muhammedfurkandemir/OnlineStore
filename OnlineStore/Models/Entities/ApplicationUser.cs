@@ -2,9 +2,9 @@
 using OnlineStore.Models.Abstract;
 using System.ComponentModel.DataAnnotations;
 
-namespace OnlineStore.Models.Concrete
+namespace OnlineStore.Models.Entities
 {
-    public class ApplicationUser :IdentityUser ,IEntity
+    public class ApplicationUser : IdentityUser, IEntity
     {
         [Required]
         public string? IdentityNumber { get; set; }

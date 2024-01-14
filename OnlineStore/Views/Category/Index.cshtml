@@ -1,4 +1,4 @@
-﻿@using OnlineStore.Models.Concrete
+﻿@using OnlineStore.Models.Entities
 @model List<Category>
 
 
@@ -8,7 +8,22 @@
         <h1>Categories</h1>
         </div>
     </div>
-    <div>
+<div>
+    @if (TempData["Success"] != null)
+    {
+        <div>
+            <div class="alert alert-dismissible alert-success">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <strong>Well done!</strong> @TempData["Success"]
+            </div>
+        </div>
+    }
+    <div class="row pt-3 pb-2">
+
+        <a asp-controller="Category" asp-action="Add" type="button" class="btn btn-primary col-md-5">
+            Add New Category
+        </a>
+    </div>
 <table class ="table table-bordered">
     <thead >
         <tr>
@@ -26,26 +41,18 @@
                 <td>@category.Id</td>
                 <td>@category.CategoryName</td>
                 <td>@category.Description</td>
-                    <td><a asp-controller="Category" asp-action="Update" asp-route-id="@category.Id" type="button" class="btn btn-info" style="width:150px"><i class="fa fa-cog" aria-hidden="true"></i> Update</a></td>
-                    <td><a asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id" type="button" class="btn btn-danger" style="width:150px"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a></td>
+                    <td><a asp-controller="Category" asp-action="Update" asp-route-id="@category.Id" type="button"
+                        class="btn btn-info rounded" style="width:150px"><i class="fa fa-cog" aria-hidden="true"></i> Update</a></td>
+
+                    <td><a asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id" type="button"
+                        class="btn btn-danger rounded" style="width:150px"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a></td>
             </tr>
         }
         
     </tbody>
 </table>
 
-         @if (TempData["Success"] != null)
-        {
-        <div>
-        <h4 class="text-info">@TempData["Success"]</h4>
-        </div>
-        }
-        <div class="row pt-3 pb-2">
-            
-        <a asp-controller="Category" asp-action="Add" type="button" class="btn btn-primary col-md-5">
-            Add New Category
-        </a>
-        </div>
+        
 
 
 </div>

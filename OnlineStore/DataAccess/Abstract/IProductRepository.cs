@@ -1,9 +1,9 @@
-﻿using OnlineStore.Models.Concrete;
-using OnlineStore.Models.DTOs;
+﻿using OnlineStore.Models.DTOs;
+using OnlineStore.Models.Entities;
 using OnlineStore.Utilities.EntityFreamwork.Repositories;
 using System.Linq.Expressions;
 
-namespace OnlineStore.Models.Abstract.Repositories
+namespace OnlineStore.DataAccess.Abstract
 {
     public interface IProductRepository : IRepository<Product>
     {
