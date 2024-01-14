@@ -16,9 +16,23 @@ namespace OnlineStore.DataAccess.Concrete
             _onlineStoreContext = onlineStoreContext;
         }
 
-        public List<Product> GetAllByCategoryId(int categoryId)
+        public List<ProductDetailDto> GetAllByCategoryId(int categoryId)
         {
-            return _onlineStoreContext.Products.Where(p => p.CategoryId == categoryId).ToList();
+            var result = from product in _onlineStoreContext.Products
+                        join category in _onlineStoreContext.Categories
+                        on product.CategoryId equals category.Id
+                        where product.CategoryId == categoryId
+                        select new ProductDetailDto
+                        {
+                            Id = product.Id,
+                            ImagePath = product.ImageUrl,
+                            CategoryName = category.CategoryName, 
+                            ProductName = product.ProductName,
+                            Description = product.Description,
+                            UnitPrice = product.UnitPrice,
+                            UnitsInStock = product.UnitsInStock
+                        };
+            return result.ToList();
         }
 
         public ProductDetailDto GetProductDetail(int id)

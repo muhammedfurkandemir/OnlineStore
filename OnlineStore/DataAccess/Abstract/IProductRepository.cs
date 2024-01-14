@@ -11,6 +11,6 @@ namespace OnlineStore.DataAccess.Abstract
 
         ProductDetailDto GetProductDetail(int id);
 
-        List<Product> GetAllByCategoryId(int categoryId);
+        List<ProductDetailDto> GetAllByCategoryId(int categoryId);
     }
 }

@@ -24,12 +24,12 @@ namespace OnlineStore.Controllers
 
         public IActionResult Index()
         {
-            List<Product> products = _productRepository.GetAll();
+            List<ProductDetailDto> products = _productRepository.GetProductDetails();
             return View(products);
         }
         public IActionResult Categories()
         {
-            List<Product> products=_productRepository.GetAll();
+            List<ProductDetailDto> products = _productRepository.GetProductDetails();
             List<Category> categories = _categoryRepository.GetAll();
             HomeViewModel homeView = new HomeViewModel
             {
@@ -47,14 +47,14 @@ namespace OnlineStore.Controllers
         [HttpGet]
         public IActionResult GetProductsByCategoryId(int id) 
         { 
-            List<Product> products = _productRepository.GetAllByCategoryId(id);
+            List<ProductDetailDto> products = _productRepository.GetAllByCategoryId(id);
            
             return PartialView("_ProductsPartial", products);
         }
         [HttpGet]
         public IActionResult GetAllProduct()
         {
-            List<Product> products = _productRepository.GetAll();
+            List<ProductDetailDto> products = _productRepository.GetProductDetails();
 
             return PartialView("_ProductsPartial", products);
         }

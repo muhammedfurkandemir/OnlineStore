@@ -1,6 +1,6 @@
-﻿@using OnlineStore.Models.Entities
+﻿@using OnlineStore.Models.DTOs
 
-@model List<Product>
+@model List<ProductDetailDto>
 
     @if (Model.Count()==0)
 {
@@ -24,13 +24,13 @@ else
                 <div class="ibox">
                     <div class="ibox-content product-box">
                         <div class="product-image">
-                            <img src="@product.ImageUrl" alt="@product.ProductName" />
+                            <img src="@product.ImagePath" alt="@product.ProductName" />
                         </div>
                         <div class="product-desc">
                             <span class="product-price">
                                 @product.UnitPrice.ToString("c")
                             </span>
-                            <small class="text-muted">Category</small>
+                            <small class="text-muted">@product.CategoryName</small>
                             <div class="product-name"> @product.ProductName</div>
 
                             <div class="small m-t-xs">

@@ -33,7 +33,7 @@
                                     @using (Html.BeginForm("RemoveFromCart", "Cart"))
                                     {
                                         @Html.Hidden("Id", cartLine.Product.Id)
-                                        <button type="submit" class="btn btn-danger" style="width:100px">
+                                        <button type="submit" class="btn btn-danger rounded" style="width:100px">
                                             <i class="fa fa-trash" aria-hidden="true"></i> Sil
                                         </button>
                                     }
